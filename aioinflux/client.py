@@ -211,7 +211,7 @@ class InfluxDBClient:
         :param extra_tags: Additional tags to be added to all points passed.
         :return: Returns `True` if insert is successful. Raises `ValueError` exception otherwise.
         """
-        options = dict({ db: self.db }, **options)
+        options = dict({ 'db': self.db }, **options)
         data = parse_data(data, measurement, tag_columns, **extra_tags)
         logger.debug(data)
         url = self._url.format(endpoint='write') + '?' + urlencode(options)
